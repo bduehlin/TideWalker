@@ -1,10 +1,12 @@
 import React from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+// import Spinner from 'react-native-spinkit'
 
 const Tide = () => {
     return (
         <View style={styles.parent}>
             <ActivityIndicator size='large' color="#0000ff" />
+            {/* <Spinner/> */}
         </View>
     )
 }

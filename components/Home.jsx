@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { Button } from 'react-native-paper';
-import WaveSpinner from '@fenderdigital/react-wave-spinner';
 
 const Home = ({navigation}) => {
     const [place, setPlace] = useState("")
@@ -39,10 +38,12 @@ const styles = StyleSheet.create({
     },
     input: {
         height: 40,
+        width: 150,
         margin: 12,
         marginBottom: 30,
         borderWidth: 1,
         padding: 10,
+        alignSelf: 'center',
     },
     text: {
         marginBottom: 20,

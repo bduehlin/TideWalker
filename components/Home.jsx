@@ -7,19 +7,22 @@ const Home = ({navigation}) => {
 
     const pressHandler = () => {
         // code to grab location, react-native-geolocation-service
-        navigation.navigate('Tide')
+        navigation.navigate('Tide', {
+            latitude: 47.29,
+            longitude: -122.67
+        })
     }
 
     return (
         <View style={styles.parent}>
             <View style={styles.topdiv}>
                 <Text style={styles.title}>Welcome to TideWalker</Text>
-                <Text style={styles.text}>Share your device location to check the oceans near you.</Text>
-                <Button mode='outlined' style={styles.button} icon='map-marker-question' onPress={ pressHandler }>Share your location</Button>
+                <Text style={styles.text}>share your device location to check the oceans near you</Text>
+                <Button mode='outlined' style={styles.button} icon='map-marker-question' onPress={ pressHandler }>share your location</Button>
             </View>
             <View style={{justifyContent: 'center'}}>
-                <Text style={styles.text}>If you would rather search a location:</Text>
-                <TextInput label="Anywhere" value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="Where" />
+                <Text style={styles.text}>if you would rather search a location:</Text>
+                <TextInput label="Anywhere" value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
             </View>
         </View>
     )

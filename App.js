@@ -19,6 +19,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Foyer" component={ Foyer } />
         <Stack.Screen name="Default" component={ Default } />
+        {/* First visit pages */}
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Tide" component={Tide} />
         <Stack.Screen name="DefaultForm" component={DefaultForm} />

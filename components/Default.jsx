@@ -19,12 +19,10 @@ const Default = ({ navigation }) => {
 
     useEffect(async () => {
         const stationObj = await getStation()
-        console.log("got station")
         if (stationObj === null) {
             navigation.navigate('Home')
         }
         setStation(stationObj)
-        console.log("told state to update");
     }, [])
 
 
@@ -33,7 +31,7 @@ const Default = ({ navigation }) => {
             {
                 station ?
                     <>
-                        <Text style={styles.text}>data for: {station.name}</Text>
+                        <Text style={styles.text}>tides for "{station.name}"</Text>
                         <TideData station={station.station} />
                     </>
                     :
@@ -49,6 +47,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        paddingTop: 50,
     },
     text: {
         marginBottom: 30,

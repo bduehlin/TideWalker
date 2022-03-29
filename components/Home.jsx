@@ -22,7 +22,7 @@ const Home = ({navigation}) => {
             </View>
             <View style={{justifyContent: 'center'}}>
                 <Text style={styles.text}>if you would rather search a location:</Text>
-                <TextInput label="Anywhere" value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
+                <TextInput value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
             </View>
         </View>
     )

@@ -20,7 +20,7 @@ const Foyer = ({navigation}) => {
             navigation.navigate('Default')
         }
         else {
-            navigation.navigate('Home')
+            navigation.navigate('Landing')
         }
     })
 

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { Button } from 'react-native-paper';
 
-const Home = ({navigation}) => {
+const Landing = ({navigation}) => {
     const [place, setPlace] = useState("")
 
     const pressHandler = () => {
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Home
+export default Landing

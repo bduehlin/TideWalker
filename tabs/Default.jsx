@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
-import { Button } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import TideData from './TideData';
+import TideData from '../components/TideData';
 
 const Default = ({ navigation }) => {
     const [station, setStation] = useState(null)

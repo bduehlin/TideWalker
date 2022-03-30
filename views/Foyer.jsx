@@ -17,7 +17,7 @@ const Foyer = ({navigation}) => {
     useEffect(async () => {
         const station = await getStation()
         if (station !== null){
-            navigation.navigate('Default')
+            navigation.navigate('Tabs')
         }
         else {
             navigation.navigate('Landing')

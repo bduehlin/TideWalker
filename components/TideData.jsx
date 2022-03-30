@@ -15,7 +15,7 @@ const TideData = ({station}) => {
 
     useEffect(() => {
         const today = format(new Date(), 'yyyyMMdd')
-        const tomorrow = format(new Date(new Date().getTime() + + 24 * 60 * 60 * 1000), 'yyyyMMdd')
+        const tomorrow = format(new Date(new Date().getTime() + 24 * 60 * 60 * 1000), 'yyyyMMdd')
         axios.get("https://api.tidesandcurrents.noaa.gov/api/prod/datagetter?begin_date="+today+"&end_date="+tomorrow+"&station="+station+"&product=predictions&datum=mllw&time_zone=gmt&interval=hilo&units=metric&format=json")
             .then((response) => {
                 setLoaded(true)
@@ -25,7 +25,7 @@ const TideData = ({station}) => {
                 setLoadText("there was an error fetching tide data")
                 console.log(e)
             })
-    }, [])
+    }, [station])
 
     useEffect(() =>{
         if (predictions[0].t){
@@ -60,7 +60,7 @@ const TideData = ({station}) => {
             {
                 loaded ?
                     <>
-                        <Text>{JSON.stringify(predictions)}</Text>
+                        {/* <Text>{JSON.stringify(predictions)}</Text> */}
                         <Text>{loadText}</Text>
                         <Text>it will reverse in {countdown}</Text>
                     </>
@@ -77,7 +77,7 @@ export default TideData
 
 const styles = StyleSheet.create({
     parent: {
-        flex: 1,
+        // flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,

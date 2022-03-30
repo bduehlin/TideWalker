@@ -21,7 +21,7 @@ const DefaultForm = ({ navigation, route }) => {
             // saving error
             console.log(e)
         } finally {
-            navigation.navigate('Default')
+            navigation.navigate('Tabs')
         }
     }
     return (

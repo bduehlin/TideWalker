@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import { Button } from 'react-native-paper';
+import SearchInput from '../components/SearchInput';
 
 const Landing = ({navigation}) => {
-    const [place, setPlace] = useState("")
 
     const pressHandler = () => {
         // code to grab location, react-native-geolocation-service
@@ -22,7 +22,7 @@ const Landing = ({navigation}) => {
             </View>
             <View style={{justifyContent: 'center'}}>
                 <Text style={styles.text}>if you would rather search a location:</Text>
-                <TextInput value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
+                <SearchInput/>
             </View>
         </View>
     )

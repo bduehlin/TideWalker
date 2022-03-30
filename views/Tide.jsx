@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Button } from 'react-native-paper';
-import TideData from './TideData';
+import TideData from '../components/TideData';
+import SearchInput from '../components/SearchInput';
 // import Spinner from 'react-native-spinkit'
 
 const Tide = ({ navigation, route }) => {
@@ -17,7 +18,8 @@ const Tide = ({ navigation, route }) => {
         <View style={styles.parent}>
             <TideData station={9446484} />
             <Button mode='outlined' style={{ ...styles.button, width: 300 }} onPress={defaultHandler}>use this location as default</Button>
-            <Button mode='outlined' style={styles.button} >sea another place</Button>
+            <Text style={styles.text}>or search for a new coast</Text>
+            <SearchInput />
         </View>
     )
 }
@@ -30,14 +32,14 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     text: {
-        marginBottom: 30,
+        marginTop: 30,
         textAlign: "center",
         fontSize: 20,
     },
     button: {
-        width: 250,
+        width: 230,
         alignSelf: 'center',
-    }
+    },
 });
 
 export default Tide

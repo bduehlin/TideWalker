@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { TextInput } from 'react-native'
+import styles from '../styles/styles'
 
 const SearchInput = () => {
     const [place, setPlace] = useState("")
@@ -8,17 +9,5 @@ const SearchInput = () => {
         <TextInput value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
     )
 }
-
-const styles = StyleSheet.create({
-    input: {
-        height: 40,
-        width: 150,
-        margin: 12,
-        marginBottom: 30,
-        borderWidth: 1,
-        padding: 10,
-        alignSelf: 'center',
-    }
-});
 
 export default SearchInput

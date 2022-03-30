@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TideData from '../components/TideData';
+import styles from '../styles/styles';
 
 const Default = ({ navigation }) => {
     const [station, setStation] = useState(null)
@@ -39,25 +40,6 @@ const Default = ({ navigation }) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    parent: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-        paddingTop: 50,
-    },
-    text: {
-        marginBottom: 30,
-        textAlign: "center",
-        fontSize: 20,
-    },
-    button: {
-        width: 250,
-        alignSelf: 'center',
-    }
-});
 
 
 export default Default

@@ -4,6 +4,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Default from '../tabs/Default';
 import Search from '../tabs/Search';
+import About from '../tabs/About';
 
 
 const Tab = createBottomTabNavigator();
@@ -21,6 +22,7 @@ export default function Tabs() {
             }}>
             <Tab.Screen name="Home" component={Default} />
             <Tab.Screen name="Search" component={Search} />
+            <Tab.Screen name="About" component={About} />
         </Tab.Navigator>
     );
 }

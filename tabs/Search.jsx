@@ -3,6 +3,8 @@ import { View, Text, StyleSheet } from 'react-native'
 
 import SearchInput from '../components/SearchInput';
 
+import styles from '../styles/styles';
+
 const Search = ({ navigation }) => {
 
     return (
@@ -12,25 +14,6 @@ const Search = ({ navigation }) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    parent: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-        paddingTop: 50,
-    },
-    text: {
-        marginBottom: 30,
-        textAlign: "center",
-        fontSize: 20,
-    },
-    button: {
-        width: 250,
-        alignSelf: 'center',
-    }
-});
 
 
 export default Search

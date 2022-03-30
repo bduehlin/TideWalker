@@ -4,6 +4,7 @@ import { Button } from 'react-native-paper';
 import TideData from '../components/TideData';
 import SearchInput from '../components/SearchInput';
 // import Spinner from 'react-native-spinkit'
+import styles from '../styles/styles';
 
 const Tide = ({ navigation, route }) => {
     const { latitude, longitude } = route.params
@@ -23,23 +24,5 @@ const Tide = ({ navigation, route }) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    parent: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    },
-    text: {
-        marginTop: 30,
-        textAlign: "center",
-        fontSize: 20,
-    },
-    button: {
-        width: 230,
-        alignSelf: 'center',
-    },
-});
 
 export default Tide

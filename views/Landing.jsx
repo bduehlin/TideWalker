@@ -19,7 +19,7 @@ const Landing = ({navigation}) => {
             <View style={styles.topdiv}>
                 <Text style={styles.title}>Welcome to TideWalker</Text>
                 <Text style={styles.text}>share your device location to check the oceans near you</Text>
-                <Button mode='outlined' style={styles.button} icon='map-marker-question' onPress={ pressHandler }>share your location</Button>
+                <Button mode='contained' style={styles.button} icon='map-marker-question' onPress={ pressHandler } color='#ff4d00'>share your location</Button>
             </View>
             <View style={{justifyContent: 'center'}}>
                 <Text style={styles.text}>if you would rather search a location:</Text>

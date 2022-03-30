@@ -8,6 +8,10 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#bfd1ff'
     },
+    childbox: {
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     topdiv: {
         justifyContent: 'center',
         marginTop: '50%',

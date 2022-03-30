@@ -16,11 +16,15 @@ const Tide = ({ navigation, route }) => {
     }
 
     return (
-        <View style={styles.parent}>
-            <TideData station={9446484} />
-            <Button mode='outlined' style={{ ...styles.button, width: 300 }} onPress={defaultHandler}>use this location as default</Button>
-            <Text style={styles.text}>or search for a new coast</Text>
-            <SearchInput />
+        <View style={[styles.parent, {justifyContent: 'space-between'}]}>
+            <View style={styles.childbox}>
+                <TideData station={9446484} />
+                <Button mode='contained' style={{ ...styles.button, width: 300 }} onPress={defaultHandler} color='#ff4d00'>use this location as default</Button>
+            </View>
+            <View style={styles.childbox}>
+                <Text style={styles.text}>or search for a new coast</Text>
+                <SearchInput />
+            </View>
         </View>
     )
 }

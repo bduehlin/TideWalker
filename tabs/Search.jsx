@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text } from 'react-native'
 
 import SearchInput from '../components/SearchInput';
 
 import styles from '../styles/styles';
 
 import Geocoder from 'react-native-geocoding'
+import API_KEY from '../apikey';
+
 
 const Search = ({ navigation }) => {
     const [mapsObj, setMapsObj] = useState({})
@@ -13,7 +15,7 @@ const Search = ({ navigation }) => {
 
 
     const geocode = async (place) => {
-        Geocoder.init("AIzaSyDgHVXawbgPBaZW7Q6IOL9tGAKuv49RKm8", { language: "en" })
+        Geocoder.init(API_KEY, { language: "en" })
         try {
             console.log(typeof(place))
             const geocodeObj = await Geocoder.from(place)

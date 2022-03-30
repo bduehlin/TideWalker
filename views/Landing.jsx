@@ -15,7 +15,7 @@ const Landing = ({navigation}) => {
     }
 
     return (
-        <View style={{...styles.parent, justifyContent: "space-between"}}>
+        <View style={[styles.parent, {justifyContent: "space-between"}]}>
             <View style={styles.topdiv}>
                 <Text style={styles.title}>Welcome to TideWalker</Text>
                 <Text style={styles.text}>share your device location to check the oceans near you</Text>

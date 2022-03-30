@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, StyleSheet } from 'react-native'
 import { Button } from 'react-native-paper'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from '../styles/styles';
 
 
 const DefaultForm = ({ navigation, route }) => {
@@ -27,38 +28,11 @@ const DefaultForm = ({ navigation, route }) => {
     return (
         <View style={styles.parent}>
             <Text>what do you call this place?</Text>
-            <TextInput value={name} onChangeText={text => setName(text)} style={styles.input} onSubmitEditing={saveDefault} placeholder="name of home location" />
-            <Button mode='outlined' style={{ ...styles.button }} onPress={saveDefault}>set default</Button>
+            <TextInput value={name} onChangeText={text => setName(text)} style={[styles.input, {width: 170}]} onSubmitEditing={saveDefault} placeholder="name of home location" />
+            <Button mode='outlined' style={[styles.button, {width: 150}]} onPress={saveDefault}>set default</Button>
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    parent: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    },
-    text: {
-        marginBottom: 30,
-        textAlign: "center",
-        fontSize: 20,
-    },
-    input: {
-        height: 40,
-        width: 200,
-        margin: 12,
-        marginBottom: 30,
-        borderWidth: 1,
-        padding: 10,
-        alignSelf: 'center',
-    },
-    button: {
-        width: 250,
-        alignSelf: 'center',
-    }
-});
 
 
 export default DefaultForm

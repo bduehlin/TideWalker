@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
+        backgroundColor: '#bfd1ff'
     },
     topdiv: {
         justifyContent: 'center',
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         padding: 10,
         alignSelf: 'center',
+        color: '#0048ff',
     },
     text: {
         marginBottom: 20,

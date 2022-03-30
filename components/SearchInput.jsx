@@ -6,7 +6,7 @@ const SearchInput = () => {
     const [place, setPlace] = useState("")
     
     return (
-        <TextInput value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" />
+        <TextInput value={place} onChangeText={text => setPlace(text)} style={styles.input} placeholder="where" selectionColor='#0048ff'/>
     )
 }
 

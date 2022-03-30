@@ -1,28 +1,45 @@
-// import { useState } from 'react';
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Default from '../tabs/Default';
 import Search from '../tabs/Search';
 import About from '../tabs/About';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons'
 
 
 const Tab = createBottomTabNavigator();
 
 export default function Tabs() {
     return (
-        <Tab.Navigator screenOptions={{ 
-            headerShown: false, 
+        <Tab.Navigator screenOptions={({ route }) => ({
+            tabBarIcon: ({  color, size }) => {
+                let iconName;
+                if (route.name === 'Home') {
+                    iconName = 'home';
+                } else if (route.name === 'Search') {
+                    iconName = 'search';
+                } else if (route.name === 'About') {
+                    iconName = 'waves'
+                }
+                // You can return any component that you like here!
+                return <MaterialIcons name={iconName} size={size} color={color} />;
+            },
+            headerShown: false,
             tabBarStyle: {
                 // position: 'absolute',
-                backgroundColor: '#a7a7a7',
+                backgroundColor: '#0048ff',
+                paddingTop: 10,
+                paddingBottom: 10,
+                height: 70,
             },
-            tabBarActiveTintColor: '#000000',
-            tabBarInactiveTintColor: '#000000'
-            }}>
+            tabBarActiveTintColor: '#ff4d00',
+            tabBarInactiveTintColor: '#ffffff',
+            tabBarLabelStyle: {
+                fontSize: 20,
+            }
+        })
+        } >
             <Tab.Screen name="Home" component={Default} />
             <Tab.Screen name="Search" component={Search} />
             <Tab.Screen name="About" component={About} />
-        </Tab.Navigator>
+        </ Tab.Navigator>
     );
 }

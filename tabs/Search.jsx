@@ -18,9 +18,7 @@ const Search = ({ navigation }) => {
     const geocode = async (place) => {
         Geocoder.init(API_KEY, { language: "en" })
         try {
-            console.log(typeof (place))
             const geocodeObj = await Geocoder.from(place)
-            console.log(geocodeObj)
             setMapsObj(geocodeObj.results[0])
             if (fetchErr !== "") {
                 setFetchErr("")

@@ -1,11 +1,15 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-const StationFinder = ({coords}) => {
+const StationFinder = ({obj}) => {
+    const { location: coords } = obj.geometry
     console.log(coords.lat)
     console.log(coords.lng)
     return (
-        <Text>{coords.lat} {coords.lng}</Text>
+        <>
+            <Text>scanning the tides near {obj.formatted_address}</Text>
+            <Text>{coords.lat} {coords.lng}</Text>
+        </>
     )
 }
 

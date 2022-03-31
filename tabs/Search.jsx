@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { View, Text } from 'react-native'
 
 import SearchInput from '../components/SearchInput';
+import StationFinder from '../components/StationFinder';
 
 import styles from '../styles/styles';
 
@@ -17,11 +18,11 @@ const Search = ({ navigation }) => {
     const geocode = async (place) => {
         Geocoder.init(API_KEY, { language: "en" })
         try {
-            console.log(typeof(place))
+            console.log(typeof (place))
             const geocodeObj = await Geocoder.from(place)
             console.log(geocodeObj)
             setMapsObj(geocodeObj.results[0])
-            if(fetchErr !== ""){
+            if (fetchErr !== "") {
                 setFetchErr("")
             }
         } catch (e) {
@@ -33,13 +34,20 @@ const Search = ({ navigation }) => {
     return (
         <View style={styles.parent}>
             {
-                mapsObj.formatted_address ? <Text>{JSON.stringify(mapsObj.formatted_address)}</Text> : <></>
+                mapsObj.formatted_address ? 
+                <>
+                    <StationFinder obj={mapsObj} />
+                </>
+                :
+                <>
+                    <Text>measure the ocean</Text>
+                    <SearchInput submit={geocode} />
+                    {
+                        fetchErr ? <Text>{fetchErr}</Text> : <></>
+                    }
+                </>
             }
-            <Text>measure the ocean</Text>
-            <SearchInput submit={geocode} />
-            {
-                fetchErr ? <Text>{fetchErr}</Text> : <></>
-            }
+
         </View>
     )
 }

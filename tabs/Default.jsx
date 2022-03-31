@@ -32,7 +32,7 @@ const Default = ({ navigation }) => {
                 station ?
                     <>
                         <Text style={styles.text}>tides for "{station.name}"</Text>
-                        {/* <TideData station={station.station} /> */}
+                        <TideData station={station.station} />
                     </>
                     :
                     <ActivityIndicator />

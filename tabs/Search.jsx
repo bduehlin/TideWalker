@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { View, Text } from 'react-native'
+import { Button } from 'react-native-paper';
 
 import SearchInput from '../components/SearchInput';
 import StationFinder from '../components/StationFinder';
@@ -29,12 +30,18 @@ const Search = ({ navigation }) => {
         }
     }
 
+    const pressHandler = () => {
+        setMapsObj({})
+        setFetchErr("")
+    }
+
     return (
         <View style={styles.parent}>
             {
                 mapsObj.formatted_address ? 
                 <>
                     <StationFinder obj={mapsObj} />
+                    <Button mode='contained' style={styles.button} icon='map-marker-question' onPress={ pressHandler } color='#ff4d00'>search again</Button>
                 </>
                 :
                 <>
@@ -45,7 +52,6 @@ const Search = ({ navigation }) => {
                     }
                 </>
             }
-
         </View>
     )
 }

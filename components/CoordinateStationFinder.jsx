@@ -3,77 +3,71 @@ import { Text } from 'react-native'
 import TideData from './TideData'
 import { Button } from 'react-native-paper'
 import styles from '../styles/styles'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native';
 
-const StationFinder = ({ obj }) => {
-    const { location: coords } = obj.geometry
+const CoordinateStationFinder = ({ latitude, longitude }) => {
 
     const [message, setMessage] = useState("")
     const [station, setStation] = useState({})
 
-    const findClosest = (stations, coords) => {
+    const navigation = useNavigation();
+
+    const findClosest = (stations) => {
         const closest = [1000, stations[0]]
         for (const station of stations) {
-            const distance = Math.sqrt(Math.pow((station.lat - coords.lat), 2) + Math.pow((station.lng - coords.lng), 2))
+            const distance = Math.sqrt(Math.pow((station.lat - latitude), 2) + Math.pow((station.lng - longitude), 2))
             if (distance < closest[0]) {
                 closest[0] = distance
                 closest[1] = station
             }
         }
+        console.log(closest)
         return closest
     }
 
     useEffect(() => {
-        if (coords.lng < -105) {
+        console.log(latitude, longitude)
+        if (longitude < -105) {
             const stations = require('../stations/WestStations.json')
-            const closest = findClosest(stations, coords)
+            const closest = findClosest(stations)
             if (closest[0] > 5) {
                 setMessage("this place is too far from a station to be worth checking")
             }
-            else {
-                console.log("West, East of 180th meridian", closest)
-                setStation(closest[1])
-            }
+            console.log("West, East of 180th meridian", closest)
+            setStation(closest[1])
         }
-        else if (coords.lng > 130) {
+        else if (longitude > 130) {
             const stations = require('../stations/WestStations.json')
-            const closest = findClosest(stations, coords)
+            const closest = findClosest(stations)
             if (closest[0] > 5) {
                 setMessage("this place is too far from a station to be worth checking")
             }
-            else {
-                console.log("West, West of 180th meridian", closest)
-                setStation(closest[1])
-            }
+            console.log("West, West of 180th meridian", closest)
+            setStation(closest[1])
         }
-        else if (coords.lng > -105 && coords.lng < 0 && coords.lat > 35.46) {
+        else if (longitude > -105 && longitude < 0 && latitude > 35.46) {
             const stations = require('../stations/NEastStations.json')
-            const closest = findClosest(stations, coords)
+            const closest = findClosest(stations)
             if (closest[0] > 5) {
                 setMessage("this place is too far from a station to be worth checking")
             }
-            else {
-                console.log("NEast", closest)
-                setStation(closest[1])
-            }
+            console.log("NEast", closest)
+            setStation(closest[1])
         }
-        else if (coords.lng > -105 && coords.lng < 0 && coords.lat < 35.46) {
+        else if (longitude > -105 && longitude < 0 && latitude < 35.46) {
             const stations = require('../stations/SEastStations.json')
-            const closest = findClosest(stations, coords)
+            const closest = findClosest(stations)
             if (closest[0] > 5) {
                 setMessage("this place is too far from a station to be worth checking")
             }
-            else {
-                console.log("SEast", closest)
-                setStation(closest[1])
-            }
+            console.log("SEast", closest)
+            setStation(closest[1])
         }
         else {
+            console.log("this place is too far from a station to be worth checking")
             setMessage("this place is too far from a station to be worth checking")
         }
     }, [])
-
-    const navigation = useNavigation()
 
     const defaultHandler = () => {
         navigation.navigate('DefaultForm', {
@@ -83,11 +77,7 @@ const StationFinder = ({ obj }) => {
 
     return (
         <>
-            <Text>scanning the tides near {obj.formatted_address}</Text>
-            <Text>{coords.lat} {coords.lng}</Text>
-            {
-                message ? <Text>{message}</Text> : <></>
-            }
+            <Text>scanning the tides near {latitude} {longitude}</Text>
             {
                 station.name ?
                     <>
@@ -102,4 +92,4 @@ const StationFinder = ({ obj }) => {
     )
 }
 
-export default StationFinder
+export default CoordinateStationFinder

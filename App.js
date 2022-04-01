@@ -7,6 +7,7 @@ import DefaultForm from './views/DefaultForm'
 import Tabs from './views/Tabs';
 import CustomHeader from './components/CustomHeader';
 import AppLoading from 'expo-app-loading';
+import { Asset } from 'expo-asset'
 import { useFonts, Cantarell_700Bold_Italic, Cantarell_400Regular } from '@expo-google-fonts/cantarell';
 
 
@@ -19,7 +20,9 @@ export default function App() {
     Cantarell_400Regular
   });
 
-  if (!fontsLoaded) {
+  let imagesLoaded = Asset.fromModule(require('./waves2.png')).downloadAsync();
+
+  if (!fontsLoaded || !imagesLoaded) {
     return <AppLoading />;
   }
 

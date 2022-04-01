@@ -28,9 +28,7 @@ const DefaultForm = ({ navigation, route }) => {
     return (
         <View style={styles.parent}>
             <Text>what do you call this place?</Text>
-            <TextInput value={name} onChangeText={text => setName(text)} style={[styles.input, {width: 170}]} onSubmitEditing={saveDefault} placeholder="name of home location" />
-            <Button mode='contained' style={[styles.button, {width: 150}]} onPress={saveDefault} color='#ff4d00'>set default</Button>
-        </View>
+            <TextInput value={name} onChangeText={text => setName(text)} style={[styles.input, {width: 170}]} onSubmitEditing={saveDefault} placeholder="name of home location" />        </View>
     )
 }
 

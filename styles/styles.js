@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
     button: {
         width: 250,
         alignSelf: 'center',
+        marginBottom: 20,
     }
 });
 export default styles

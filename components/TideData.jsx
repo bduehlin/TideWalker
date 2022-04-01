@@ -2,10 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
 import axios from 'axios'
 import { format } from 'date-fns'
+import styles from '../styles/styles'
 
 const TideData = ({station}) => {
 
     const [loadText, setLoadText] = useState("touching the seas")
+    const [lastTide, setLastTide] = useState("")
+    const [nextTide, setNextTide] = useState("")
     const [loaded, setLoaded] = useState(false)
 
     const [predictions, setPredictions] = useState([{t: null}])
@@ -33,7 +36,16 @@ const TideData = ({station}) => {
             for (let i=0; i<predictions.length; i++) {
                 let time = new Date(predictions[i].t.substring(0,10) + "T" + predictions[i].t.substring(11)+"Z")
                 if (time > now) {
-                    setLoadText(predictions[i].type === 'H'? "the tide is flowing": "the tide is ebbing")
+                    if (predictions[i].type === 'H'){
+                        setLoadText( "the tide is flowing higher")
+                        setLastTide(`the last low tide was ${predictions[i-1].v} meters ${predictions[i-1].v > 0? "above": "below"} mean lower low water level`)
+                        setNextTide(`, at the coming high tide, with a water level of ${predictions[i].v} ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
+                    }
+                    else {
+                        setLoadText("the tide is ebbing lower")
+                        setLastTide(`the last high tide was ${predictions[i-1].v} meters ${predictions[i-1].v > 0? "above": "below"} mean lower low water level`)
+                        setNextTide(`, at the coming low tide, with a water level of ${predictions[i].v} ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
+                    }
                     const remaining = (time - now)/60000
                     if (remaining < 60){
                         const minutes = parseInt(remaining)
@@ -61,8 +73,9 @@ const TideData = ({station}) => {
                 loaded ?
                     <>
                         {/* <Text>{JSON.stringify(predictions)}</Text> */}
-                        <Text>{loadText}</Text>
-                        <Text>it will reverse in {countdown}</Text>
+                        <Text style={styles.text}>{loadText}</Text>
+                        <Text>{lastTide}</Text>
+                        <Text>it will reverse in {countdown}{nextTide}</Text>
                     </>
                     :
                     <>
@@ -74,17 +87,3 @@ const TideData = ({station}) => {
     )
 }
 export default TideData
-
-const styles = StyleSheet.create({
-    parent: {
-        // flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20,
-    },
-    text: {
-        marginBottom: 30,
-        textAlign: "center",
-        fontSize: 20,
-    },
-});

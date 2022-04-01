@@ -56,6 +56,7 @@ export default function Tabs({navigation}) {
             tabBarInactiveTintColor: '#ffffff',
             tabBarLabelStyle: {
                 fontSize: 20,
+                fontFamily: 'Cantarell_400Regular'
             }
         })
         } >

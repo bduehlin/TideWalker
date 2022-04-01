@@ -86,14 +86,14 @@ const StationFinder = ({ obj }) => {
             <Text>scanning the tides near {obj.formatted_address}</Text>
             <Text>{coords.lat} {coords.lng}</Text>
             {
-                message ? <Text>{message}</Text> : <></>
+                message ? <Text style={[styles.text, {padding: 15, marginTop:20, width: '100%', backgroundColor: '#ffaa85'}]}>{message}</Text> : <></>
             }
             {
                 station.name ?
                     <>
-                        <Text>{station.name}</Text>
+                        <Text style={{ padding: 20, textAlign: 'auto' }}>station name: {station.name}</Text>
                         <TideData station={station.id} />
-                        <Button mode='contained' style={[ styles.button, {width: 300} ]} onPress={defaultHandler} color='#ff4d00'>use this location as default</Button>
+                        <Button mode='contained' style={[styles.button, { width: 300 }]} onPress={defaultHandler} color='#ff4d00'>use this location as default</Button>
                     </>
                     :
                     <></>

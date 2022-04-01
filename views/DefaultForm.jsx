@@ -28,7 +28,8 @@ const DefaultForm = ({ navigation, route }) => {
     return (
         <View style={styles.parent}>
             <Text>what do you call this place?</Text>
-            <TextInput value={name} onChangeText={text => setName(text)} style={[styles.input, {width: 170}]} onSubmitEditing={saveDefault} placeholder="name of home location" />        </View>
+            <TextInput value={name} onChangeText={text => setName(text)} style={[styles.input, { width: 170 }]} onSubmitEditing={saveDefault} placeholder="name of home location" />
+        </View>
     )
 }
 

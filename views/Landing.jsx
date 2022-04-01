@@ -53,7 +53,7 @@ const Landing = ({ navigation }) => {
     return (
         <View style={[styles.parent, { justifyContent: "space-between" }]}>
             <View style={[styles.topdiv, {padding: 20}]}>
-                <Text style={styles.title}>welcome to TideWalker</Text>
+                <Text style={[styles.text, { width: '100%', padding: 15, backgroundColor: '#ffaa85'}]}>welcome to TideWalker</Text>
                 <Text style={styles.text}>share your device location to check the oceans near you</Text>
                 <Button mode='contained' style={styles.button} icon='map-marker-question' onPress={pressHandler} color='#ff4d00'>share your location</Button>
                 {

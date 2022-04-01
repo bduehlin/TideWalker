@@ -6,7 +6,7 @@ import DefaultForm from './views/DefaultForm'
 import Tabs from './views/Tabs';
 import CustomHeader from './components/CustomHeader';
 import AppLoading from 'expo-app-loading';
-import { useFonts, Cantarell_700Bold_Italic } from '@expo-google-fonts/cantarell';
+import { useFonts, Cantarell_700Bold_Italic, Cantarell_400Regular } from '@expo-google-fonts/cantarell';
 
 
 const Stack = createNativeStackNavigator();
@@ -15,6 +15,7 @@ export default function App() {
 
   let [fontsLoaded] = useFonts({
     Cantarell_700Bold_Italic,
+    Cantarell_400Regular
   });
 
   if (!fontsLoaded) {

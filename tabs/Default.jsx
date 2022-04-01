@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator } from 'react-native'
 import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TideData from '../components/TideData';
@@ -33,7 +33,7 @@ const Default = ({ navigation }) => {
             {
                 station ?
                     <>
-                        <Text style={styles.text}>tides at <Text style={{fontStyle: "italic"}}>{station.name}</Text></Text>
+                        <Text style={[styles.text, {marginTop: 50}]}>tides at <Text style={{fontStyle: "italic"}}>{station.name}</Text></Text>
                         <TideData station={station.station} />
                     </>
                     :

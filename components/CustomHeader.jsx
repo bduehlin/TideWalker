@@ -17,7 +17,7 @@ const CustomHeader = () => {
     return (
         <View style={styles.header}>
             <Text style={{ marginTop: 35, alignSelf: 'center', color: '#ff4d00', fontSize: 40, position:'absolute', fontFamily: 'Cantarell_700Bold_Italic'}}>TideWalker</Text>
-            <Animated.Image style={[{ width: 600, height: 100 }, { transform: [{ translateX: moveAnim }] }]} source={require('../waves2.png')} />
+            <Animated.Image style={[{ width: 600, height: 100, marginTop: 5 }, { transform: [{ translateX: moveAnim }] }]} source={require('../waves2.png')} />
         </View>
     )
 }

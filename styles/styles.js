@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        // padding: 20,
         backgroundColor: '#bfd1ff'
     },
     childbox: {
@@ -29,6 +28,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: "center",
         fontSize: 20,
+        fontFamily: 'Cantarell_400Regular'
     },
     title: {
         marginBottom: 20,

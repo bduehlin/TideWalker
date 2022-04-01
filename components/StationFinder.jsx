@@ -27,7 +27,7 @@ const StationFinder = ({ obj }) => {
         if (coords.lng < -105) {
             const stations = require('../stations/WestStations.json')
             const closest = findClosest(stations, coords)
-            if (closest[0] > 5) {
+            if (closest[0] > 2) {
                 setMessage("this place is too far from a station to be worth checking")
             }
             else {
@@ -38,7 +38,7 @@ const StationFinder = ({ obj }) => {
         else if (coords.lng > 130) {
             const stations = require('../stations/WestStations.json')
             const closest = findClosest(stations, coords)
-            if (closest[0] > 5) {
+            if (closest[0] > 2) {
                 setMessage("this place is too far from a station to be worth checking")
             }
             else {
@@ -49,7 +49,7 @@ const StationFinder = ({ obj }) => {
         else if (coords.lng > -105 && coords.lng < 0 && coords.lat > 35.46) {
             const stations = require('../stations/NEastStations.json')
             const closest = findClosest(stations, coords)
-            if (closest[0] > 5) {
+            if (closest[0] > 2) {
                 setMessage("this place is too far from a station to be worth checking")
             }
             else {
@@ -60,7 +60,7 @@ const StationFinder = ({ obj }) => {
         else if (coords.lng > -105 && coords.lng < 0 && coords.lat < 35.46) {
             const stations = require('../stations/SEastStations.json')
             const closest = findClosest(stations, coords)
-            if (closest[0] > 5) {
+            if (closest[0] > 2) {
                 setMessage("this place is too far from a station to be worth checking")
             }
             else {

@@ -1,16 +1,38 @@
+import React, {useEffect} from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Default from '../tabs/Default';
 import Search from '../tabs/Search';
 import About from '../tabs/About';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 const Tab = createBottomTabNavigator();
 
-export default function Tabs() {
-    return (
+export default function Tabs({navigation}) {
+
+    const getStation = async () => {
+        try {
+            const jsonValue = await AsyncStorage.getItem('default')
+            return jsonValue != null ? JSON.parse(jsonValue) : null;
+        } catch (e) {
+            // error reading value
+            console.log("local storage error", e)
+        }
+    }
+
+    useEffect(async () => {
+        const station = await getStation()
+        if (station === null){
+            navigation.navigate('Landing')
+        }
+    })
+
+
+    return (        
         <Tab.Navigator screenOptions={({ route }) => ({
-            tabBarIcon: ({  color, size }) => {
+            tabBarIcon: ({ color, size }) => {
                 let iconName;
                 if (route.name === 'Home') {
                     iconName = 'home';

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, StyleSheet, ActivityIndicator } from 'react-native'
+import { useIsFocused } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import TideData from '../components/TideData';
 import styles from '../styles/styles';
@@ -16,14 +17,15 @@ const Default = ({ navigation }) => {
             console.log("local storage error", e)
         }
     }
-
+    const focused = useIsFocused()
+    
     useEffect(async () => {
         const stationObj = await getStation()
         if (stationObj === null) {
-            navigation.navigate('Home')
+            navigation.navigate('Landing')
         }
         setStation(stationObj)
-    }, [])
+    }, [focused])
 
 
     return (
@@ -31,7 +33,7 @@ const Default = ({ navigation }) => {
             {
                 station ?
                     <>
-                        <Text style={styles.text}>tides for "{station.name}"</Text>
+                        <Text style={styles.text}>tides at <Text style={{fontStyle: "italic"}}>{station.name}</Text></Text>
                         <TideData station={station.station} />
                     </>
                     :

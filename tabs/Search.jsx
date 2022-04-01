@@ -4,11 +4,15 @@ import { Button } from 'react-native-paper';
 
 import SearchInput from '../components/SearchInput';
 import StationFinder from '../components/StationFinder';
+import CoordinateStationFinder from '../components/CoordinateStationFinder';
 
 import styles from '../styles/styles';
 
 import Geocoder from 'react-native-geocoding'
 import API_KEY from '../apikey';
+
+import * as Location from 'expo-location'
+
 
 
 const Search = ({ navigation }) => {
@@ -35,23 +39,53 @@ const Search = ({ navigation }) => {
         setFetchErr("")
     }
 
+    const hereHandler = async () => {
+        // code to grab location, expo-location
+        const location = await (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+            let location = await Location.getCurrentPositionAsync({});
+            return location
+        })();
+
+        setMapsObj({
+            latitude: location.coords.latitude,
+            longitude: location.coords.longitude
+        })
+    }
+
+    if (mapsObj.formatted_address) {
+        return (
+            <View style={styles.parent}>
+                <StationFinder obj={mapsObj} />
+                <Button mode='contained' style={styles.button} onPress={pressHandler} color='#ff4d00'>search again</Button>
+            </View>
+        )
+    }
+
+    else if (mapsObj.latitude) {
+        return (
+            <View style={styles.parent}>
+                <CoordinateStationFinder latitude={mapsObj.latitude} longitude={mapsObj.longitude} />
+                <Button mode='contained' style={styles.button} onPress={pressHandler} color='#ff4d00'>search again</Button>
+            </View>
+        )
+    }
+
     return (
         <View style={styles.parent}>
-            {
-                mapsObj.formatted_address ? 
-                <>
-                    <StationFinder obj={mapsObj} />
-                    <Button mode='contained' style={styles.button} icon='map-marker-question' onPress={ pressHandler } color='#ff4d00'>search again</Button>
-                </>
-                :
-                <>
-                    <Text>measure the ocean</Text>
-                    <SearchInput submit={geocode} />
-                    {
-                        fetchErr ? <Text>{fetchErr}</Text> : <></>
-                    }
-                </>
-            }
+            <View style={{ width: '100%', padding: 15, backgroundColor: '#ffaa85', marginBottom: 20}}>
+                <Text style={styles.text}>measure the ocean</Text>
+                <SearchInput submit={geocode} />
+                {
+                    fetchErr ? <Text>{fetchErr}</Text> : <></>
+                }
+            </View>
+            <Text style={styles.text}>or</Text>
+            <Button mode='contained' style={[styles.button, { width: 240 }]} icon='map-marker-question' onPress={hereHandler} color='#ff4d00'>scry at my location</Button>
         </View>
     )
 }

@@ -81,9 +81,9 @@ const CoordinateStationFinder = ({ latitude, longitude }) => {
             {
                 station.name ?
                     <>
-                        <Text>{station.name}</Text>
+                        <Text>station name: {station.name}</Text>
                         <TideData station={station.id} />
-                        <Button mode='contained' style={{ ...styles.button, width: 300 }} onPress={defaultHandler} color='#ff4d00'>use this location as default</Button>
+                        <Button mode='contained' style={[styles.button, {width: 300}]} onPress={defaultHandler} color='#ff4d00'>use this location as default</Button>
                     </>
                     :
                     <></>

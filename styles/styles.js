@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
+        // padding: 20,
         backgroundColor: '#bfd1ff'
     },
     childbox: {
@@ -39,6 +39,13 @@ const styles = StyleSheet.create({
         width: 250,
         alignSelf: 'center',
         marginBottom: 20,
+    },
+    header: {
+        height: 100,
+        backgroundColor: 'white',
+        justifyContent: 'space-between',
+        margin: 0, 
+        padding: 0,
     }
 });
 export default styles

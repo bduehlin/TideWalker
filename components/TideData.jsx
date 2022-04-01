@@ -39,12 +39,12 @@ const TideData = ({station}) => {
                     if (predictions[i].type === 'H'){
                         setLoadText( "the tide is flowing higher")
                         setLastTide(`the last low tide was ${predictions[i-1].v} meters ${predictions[i-1].v > 0? "above": "below"} mean lower low water level`)
-                        setNextTide(`, at the coming high tide, with a water level of ${predictions[i].v} ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
+                        setNextTide(`, at the coming high tide, with a water level of ${predictions[i].v} meters ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
                     }
                     else {
                         setLoadText("the tide is ebbing lower")
                         setLastTide(`the last high tide was ${predictions[i-1].v} meters ${predictions[i-1].v > 0? "above": "below"} mean lower low water level`)
-                        setNextTide(`, at the coming low tide, with a water level of ${predictions[i].v} ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
+                        setNextTide(`, at the coming low tide, with a water level of ${predictions[i].v} meters ${predictions[i].v > 0? "above": "below"} mean lower low water level`)
                     }
                     const remaining = (time - now)/60000
                     if (remaining < 60){
@@ -68,14 +68,13 @@ const TideData = ({station}) => {
     }, [predictions])
 
     return (
-        <View style={styles.parent}>
+        <View style={[styles.parent, {padding: 20}]}>
             {
                 loaded ?
                     <>
-                        {/* <Text>{JSON.stringify(predictions)}</Text> */}
-                        <Text style={styles.text}>{loadText}</Text>
-                        <Text>{lastTide}</Text>
-                        <Text>it will reverse in {countdown}{nextTide}</Text>
+                        <Text style={[styles.text, {width: '100%', padding: 15, backgroundColor: '#ffaa85'}]}>{loadText}</Text>
+                        <Text style={{alignSelf: 'flex-start'}}>{lastTide} </Text>
+                        <Text style={{alignSelf: 'flex-start'}}>it will reverse in {countdown}{nextTide}</Text>
                     </>
                     :
                     <>

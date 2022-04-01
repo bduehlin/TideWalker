@@ -1,24 +1,31 @@
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Landing from './views/Landing';
 import Tide from './views/Tide';
 import DefaultForm from './views/DefaultForm'
 import Tabs from './views/Tabs';
-import Foyer from './views/Foyer';
+import CustomHeader from './components/CustomHeader';
+import AppLoading from 'expo-app-loading';
+import { useFonts, Cantarell_700Bold_Italic } from '@expo-google-fonts/cantarell';
+
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
 
+  let [fontsLoaded] = useFonts({
+    Cantarell_700Bold_Italic,
+  });
+
+  if (!fontsLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <NavigationContainer>
+      <CustomHeader />
       <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Foyer" component={ Foyer } />
-        <Stack.Screen name="Tabs" component={ Tabs } />
+        <Stack.Screen name="Tabs" component={Tabs} />
         {/* First visit pages */}
         <Stack.Screen name="Landing" component={Landing} />
         <Stack.Screen name="Tide" component={Tide} />
@@ -28,11 +35,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

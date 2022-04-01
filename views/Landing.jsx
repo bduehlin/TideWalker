@@ -63,7 +63,7 @@ const Landing = ({ navigation }) => {
             <View style={{ justifyContent: 'center' }}>
                 <Text style={styles.text}>if you would rather search a location:</Text>
                 {
-                    fetchErr ? <Text>{fetchErr}</Text> : <></>
+                    fetchErr ? <Text style={{textAlign: 'center'}}>{fetchErr}</Text> : <></>
                 }
                 <SearchInput submit={searchHandler} />
             </View>

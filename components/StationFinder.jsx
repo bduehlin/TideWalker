@@ -83,7 +83,7 @@ const StationFinder = ({ obj }) => {
 
     return (
         <>
-            <Text>scanning the tides near {obj.formatted_address}</Text>
+            <Text style={{padding: 20}}>scanning the tides near {obj.formatted_address}</Text>
             <Text>{coords.lat} {coords.lng}</Text>
             {
                 message ? <Text style={[styles.text, {padding: 15, marginTop:20, width: '100%', backgroundColor: '#ffaa85'}]}>{message}</Text> : <></>

@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     },
     topdiv: {
         justifyContent: 'center',
-        marginTop: '50%',
+        marginTop: '40%',
     },
     input: {
         height: 40,

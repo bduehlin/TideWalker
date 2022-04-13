@@ -28,9 +28,8 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <CustomHeader />
       <View style={{ flex: 1, backgroundColor: '#bfd1ff' }}>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ header: () => <CustomHeader /> }} >
           <Stack.Screen name="Tabs" component={Tabs} />
           {/* First visit pages */}
           <Stack.Screen name="Landing" component={Landing} />

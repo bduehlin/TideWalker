@@ -52,8 +52,10 @@ const Landing = ({ navigation }) => {
 
     return (
         <View style={[styles.parent, { justifyContent: "space-between" }]}>
-            <View style={[styles.topdiv, {padding: 20}]}>
-                <Text style={[styles.text, { width: '100%', padding: 15, backgroundColor: '#ffaa85'}]}>welcome to TideWalker</Text>
+            <View style={[styles.topdiv, { padding: 20 }]}>
+                <View style={{ padding: 15, backgroundColor: '#ffaa85', marginBottom: 20 }}>
+                    <Text style={[styles.text, { marginBottom: 0 }]}>welcome to TideWalker</Text>
+                </View>
                 <Text style={styles.text}>share your device location to check the oceans near you</Text>
                 <Button mode='contained' style={styles.button} icon='map-marker-question' onPress={pressHandler} color='#ff4d00'>share your location</Button>
                 {
@@ -63,7 +65,7 @@ const Landing = ({ navigation }) => {
             <View style={{ justifyContent: 'center' }}>
                 <Text style={styles.text}>if you would rather search a location:</Text>
                 {
-                    fetchErr ? <Text style={{textAlign: 'center'}}>{fetchErr}</Text> : <></>
+                    fetchErr ? <Text style={{ textAlign: 'center' }}>{fetchErr}</Text> : <></>
                 }
                 <SearchInput submit={searchHandler} />
             </View>

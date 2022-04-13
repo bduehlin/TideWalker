@@ -26,7 +26,7 @@ The app will prompt you to make this location your "default," and every subseque
 
 After settling on a default location, you will see the tabs along the bottom of the page, a Home tab to see the tides at your default location, a Search tab to see the tides anywhere and set a new default, and an About tab with some information about the app. 
 
-![Screenshot of search tab](/readme_images/tide_data.png)
+![Screenshot of search tab](/readme_images/search.png)
 
 ### Future Features
 
